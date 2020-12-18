@@ -15,7 +15,7 @@ public class SetsListTest {
     @Mock
     private ArrayList<DinnerSet> mockDinner;
     @Mock
-    private DiningSet mockDining;
+    private TeaSet mockDining;
     @Mock
     private Customer customer;
 
@@ -29,17 +29,38 @@ public class SetsListTest {
         }
     }
 
-
     @Test
-    public void GetOrdersAmount_CheckValidnessWithMockito_Int() throws Exception {
-        when(mockDinner.size()).thenReturn(10);
-        assertEquals(mockDinner.size(), setTest.getOrdersAmount());
+    public void findAllPlasticMoney_CheckValidnessWithMockito_Int() throws Exception {
+        when(mockDining.getMaterial()).thenReturn(Material.Plastic);
+        when(mockDining.find_cost()).thenReturn(15);
+        assertEquals(150, setTest.findAllPlasticMoney());
     }
 
     @Test
-    public void ClientsNeedsRegistration_CheckValidnessWithMockito_True() throws Exception {
-        when(mockDining.getCustomer()).thenReturn(customer);
-        assertTrue(setTest.clientsNeedsRegistration());
+    public void findMaxPrice_CheckValidnessWithMockito_Int() throws Exception {
+        when(mockDining.find_cost()).thenReturn(150);
+        assertEquals(150, setTest.findMaxPrice().get().find_cost());
     }
+
+    @Test
+    public void findAveragePrice_CheckValidnessWithMockito_Int() throws Exception {
+        when(mockDining.find_cost()).thenReturn(150);
+        assertEquals(150, setTest.findAveragePrice(),0);
+    }
+
+    @Test
+    public void getPlasticOrder_CheckValidnessWithMockito_Int() throws Exception {
+        when(mockDining.getMaterial()).thenReturn(Material.Plastic);
+        when(mockDining.find_cost()).thenReturn(15);
+        assertEquals(1, setTest.getPlasticOrders().size());
+    }
+
+    @Test
+    public void getMostCommonMaterial_CheckValidnessWithMockito_Material() throws Exception {
+        when(mockDining.getMaterial()).thenReturn(Material.Plastic);
+        assertEquals(Material.Plastic, setTest.getTheMostCommonTeaSetMaterial());
+    }
+
+
 
 }

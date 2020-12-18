@@ -17,10 +17,9 @@ public abstract class DinnerSet {
     public DinnerSet(String title, LocalDate date){
         this.title = title;
         this.date = date;
-        this.customer = new Customer("Anonim", "Anonim", true);
+        this.customer = new Customer("Anonim", "Anonim");
         this.smallReview = new SmallReview();
     }
-
 
     public String getTitle() {
         return title;
@@ -40,8 +39,8 @@ public abstract class DinnerSet {
 
 
     abstract void print_set();
-
-
+    abstract Material getMaterial();
+    abstract int find_cost();
     public Customer getCustomer() {
         return customer;
     }
