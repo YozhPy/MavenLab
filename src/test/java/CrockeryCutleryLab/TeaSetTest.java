@@ -14,25 +14,12 @@ public class TeaSetTest {
 
     private static TeaSet setErrors;
 
-    @Mock
-    private Customer customer;
-
     @Before
     public void set() throws Exception{
-        MockitoAnnotations.initMocks(this);
-        when(customer.toString()).thenReturn("Mockito Customer");
         setErrors = new TeaSet("Error Test", LocalDate.of(2020, 9, 12),
-                1, 2, 3, 4, 5, Material.Porcelain,
-                customer);
+                1, 2, 3, 4, 5, Material.Porcelain
+                );
 
-    }
-
-    @Test
-    public void constructorWithCustomer_CheckAbstractConstructorValidnessWithMockito(){
-        assertEquals(LocalDate.of(2020,9,12), setErrors.getDate());
-        assertEquals("Mockito Customer", setErrors.getCustomer().toString());
-        assertEquals(Material.Porcelain, setErrors.getMaterial());
-        assertFalse(setErrors.getMaterial().isFragile);
     }
 
     @Test(expected = AmountItemsException.class)
@@ -72,7 +59,7 @@ public class TeaSetTest {
 
     @Test
     public void ToString_checkNativeClassValidness_String() throws Exception{
-        assertEquals("This is order of: Mockito Customer"+
+        assertEquals("This is order of: Anonim Anonim "+
                         ". It must be finished till: "+setErrors.getDate().plusDays(7),
                         setErrors.toString());
     }

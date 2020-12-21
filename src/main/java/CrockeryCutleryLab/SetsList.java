@@ -10,6 +10,11 @@ public class SetsList {
         this.orders = new ArrayList<DinnerSet>();
     }
 
+    public SetsList(String title, ArrayList<DinnerSet> orders){
+        this.title = title;
+        this.orders = orders;
+    }
+
     public String getTitle(){
         return title;
     }
